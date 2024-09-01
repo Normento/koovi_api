@@ -25,6 +25,7 @@ class Publication extends Model
         'author',
         'year',
         'pages',
+        'slug',
         'file_size',
     ];
 }

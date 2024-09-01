@@ -17,9 +17,13 @@ return new class extends Migration
             $table->text('description'); // Colonne pour la description
             $table->text('resume'); // Colonne pour le résumé
             $table->text('content'); // Colonne pour le contenu
+            $table->string('slug');
             $table->string('image')->nullable(); // Colonne pour l'image, peut être null
             $table->string('file')->nullable(); // Colonne pour le fichier, peut être null
-            $table->integer('file_size')->nullable(); // Colonne pour la taille du fichier, peut être null
+            $table->string('file_size')->nullable(); // Colonne pour la taille du fichier, peut être null
+            $table->string('pages')->nullable();
+            $table->string('year')->nullable();
+            $table->string('author')->nullable();
             $table->timestamps(); // Colonnes created_at et updated_at
             $table->softDeletes(); // Colonne deleted_at pour soft deletes
         });

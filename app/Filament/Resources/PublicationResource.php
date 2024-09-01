@@ -17,7 +17,15 @@ class PublicationResource extends Resource
 {
     protected static ?string $model = Publication::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-document-duplicate';
+
+    protected static ?string $navigationLabel = 'Mes publications';
+
+    protected static ?string $navigationGroup = 'Gestion du Contenu';
+
+    protected static ?int $navigationSort = 8;
+
+
 
     public static function form(Form $form): Form
     {

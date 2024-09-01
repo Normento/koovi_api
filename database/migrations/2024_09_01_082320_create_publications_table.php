@@ -24,7 +24,8 @@ return new class extends Migration
             $table->string('pages')->nullable();
             $table->string('year')->nullable();
             $table->string('author')->nullable();
-            $table->timestamps(); // Colonnes created_at et updated_at
+            $table->string('archive')->default(0);
+            $table->timestamps(); // Colonnes created_at et updated_at archive
             $table->softDeletes(); // Colonne deleted_at pour soft deletes
         });
     }

@@ -18,7 +18,16 @@ class AboutResource extends Resource
 {
     protected static ?string $model = About::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-information-circle';
+
+    protected static ?string $navigationLabel = 'A propos';
+    protected static ?string $navigationGroup = 'Gestion du Contenu';
+
+
+    protected static ?int $navigationSort = 2;
+
+
+
 
     public static function form(Form $form): Form
     {
@@ -88,10 +97,10 @@ class AboutResource extends Resource
         ];
     }
 
-    public static function canCreate(): bool
+    /* public static function canCreate(): bool
     {
         return false;
-    }
+    } */
 
     public static function canDelete(Model $record): bool
     {

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description'); // Colonne pour la description
             $table->text('resume'); // Colonne pour le résumé
             $table->longText('content')->nullable(); // Colonne pour le contenu
+            $table->string('slug');
             $table->string('image')->nullable(); // Colonne pour l'image, peut être null
             $table->string('file')->nullable(); // Colonne pour le fichier, peut être null
             $table->string('file_size')->nullable();

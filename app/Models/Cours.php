@@ -22,6 +22,7 @@ class Cours extends Model
         'content',
         'image',
         'file',
+        'slug',
         'file_size'
     ];
 }

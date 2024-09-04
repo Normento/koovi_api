@@ -71,6 +71,18 @@ class CoursResource extends Resource
             Tables\Columns\TextColumn::make('file_size')
                 ->label('Taille du fichier')
                 ->searchable(),
+            Tables\Columns\ToggleColumn::make('archive')
+            ->label('Archive')
+            ->onIcon('heroicon-s-check')
+            ->offIcon('heroicon-o-x-circle')
+            ->default(false)
+            ->beforeStateUpdated(function ($record, $state) {
+                // Runs before the state is saved to the database.
+            })
+            ->afterStateUpdated(function ($record, $state) {
+                $record->archive = $state ? 1 : 0;
+                $record->save();
+            }),
             Tables\Columns\TextColumn::make('created_at')
                 ->dateTime()
                 ->sortable()

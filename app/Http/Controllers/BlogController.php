@@ -28,4 +28,29 @@ class BlogController extends Controller
 
         return response()->json($blogs);
     }
+
+
+    public function show(string $slug){
+        if ($slug == null) {
+            return response()->json(['message' => 'Blog not found'], 404);
+        }
+        $data = Blog::where('slug',$slug)->get();
+
+        $data->transform(function ($blog) {
+            if ($blog->image) {
+                $filePath = storage_path('app/public/' . $blog->image);
+                if (file_exists($filePath)) {
+                    $blog->image_url = asset('storage/' . $blog->image);
+                } else {
+                    $blog->image_url = null;
+                }
+            } else {
+                $blog->image_url = null;
+            }
+            return $blog;
+        });
+        return response()->json($data);
+    }
 }
+
+

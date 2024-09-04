@@ -32,9 +32,14 @@ Route::get('abouts', [AboutController::class, 'index']);
 
 Route::get('blogs', [BlogController::class, 'index']);
 
+Route::get('blogs/{slug}', [BlogController::class, 'show']);
+
 Route::post('contacts', [ContactController::class, 'store']);
 
 Route::get('cours', [CoursController::class, 'index']);
+
+Route::get('cours/{slug}', [CoursController::class, 'show']);
+
 
 Route::post('newsletter', [NewsletterController::class, 'store']);
 

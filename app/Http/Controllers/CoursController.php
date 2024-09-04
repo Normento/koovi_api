@@ -29,4 +29,23 @@ class CoursController extends Controller
 
         return response()->json($cours);
     }
+
+    public function show(string $slug){
+        if ($slug == null) {
+            return response()->json(['message' => 'Cours not found'], 404);
+        }
+        $data = Cours::where('slug',$slug)->get();
+
+        $data->transform(function ($cour) {
+            if ($cour->image) {
+                $cour->image = asset('storage/' . $cour->image);
+            }
+
+            if ($cour->file) {
+                $cour->file = asset('storage/' . $cour->file);
+            }
+            return $cour;
+        });
+        return response()->json($data);
+    }
 }

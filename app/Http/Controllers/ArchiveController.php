@@ -51,8 +51,19 @@ class ArchiveController extends Controller
 
             return response()->json($phototheque);
         }
+        elseif ($type === 'publication') {
+            $publication = Publication::where('archive', 1)->get();
 
-        return response()->json(['error' => 'Invalid type'], 400);
+            $publication = $publication->map(function ($item) {
+                $item->image = asset('storage/' . $item->image);
+                $item->file = asset('storage/' . $item->file);
+                return $item;
+            });
+
+            return response()->json($publication);
+
+
     }
+    return response()->json(['error' => 'Invalid type'], 400);
 
-}
+}}

@@ -62,8 +62,8 @@ class ArchiveController extends Controller
 
             return response()->json($publication);
 
-
+        }else{
+            return response()->json(['error' => 'Invalid type'], 400);
+        }
     }
-    return response()->json(['error' => 'Invalid type'], 400);
-
-}}
+}

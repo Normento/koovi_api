@@ -78,6 +78,8 @@ class PublicationResource extends Resource
                 Tables\Columns\TextColumn::make('resume')
                     ->label('Resumé')
                     ->limit(50)
+                    
+                    ->stripTags()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('year')
                     ->label('Année')

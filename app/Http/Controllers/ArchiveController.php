@@ -25,8 +25,8 @@ class ArchiveController extends Controller
 
             // Transformer les résultats
             $publications = $publications->map(function ($item) {
-                $item->image = $this->getImageUrl($item->image);
-                $item->file = $this->getFileInfo($item->file);
+                $item->image = asset('storage/' . $item->image);
+                $item->file = asset('storage/' . $item->file);
                 return $item;
             });
 
@@ -51,18 +51,7 @@ class ArchiveController extends Controller
 
             return response()->json($phototheque);
         }
-        elseif ($type === 'publication') {
-            $publication = Publication::where('archive', 1)->get();
-
-            $publication = $publication->map(function ($item) {
-                $item->image = asset('storage/' . $item->image);
-                $item->file = asset('storage/' . $item->file);
-                return $item;
-            });
-
-            return response()->json($publication);
-
-        }else{
+        else{
             return response()->json(['error' => 'Invalid type'], 400);
         }
     }

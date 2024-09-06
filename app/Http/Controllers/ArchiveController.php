@@ -25,22 +25,30 @@ class ArchiveController extends Controller
 
             // Transformer les résultats
             $publications = $publications->map(function ($item) {
-                if ( $item->image || $item->file) {
+                if ( $item->image) {
                     $item->image = asset('storage/' . $item->image);
-                    $item->file = asset('storage/' . $item->file);
                 }else{
                     $item->image = null;
+                }
+
+                if ($item->file) {
+                    $item->file = asset('storage/' . $item->file);
+                }else{
                     $item->file = null;
                 }
                 return $item;
             });
 
             $cours = $cours->map(function ($item) {
-                if ( $item->image || $item->file) {
+                if ( $item->image) {
                     $item->image = asset('storage/' . $item->image);
-                    $item->file = asset('storage/' . $item->file);
                 }else{
                     $item->image = null;
+                }
+
+                if ($item->file) {
+                    $item->file = asset('storage/' . $item->file);
+                }else{
                     $item->file = null;
                 }
                 return $item;

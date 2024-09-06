@@ -10,8 +10,7 @@ class BlogController extends Controller
     public function index(Request $request)
     {
         $blogs = Blog::
-                    where('archive',0)
-                     ->paginate(10);
+                     paginate(10);
 
         $blogs->getCollection()->transform(function ($blog) {
             if ($blog->image) {

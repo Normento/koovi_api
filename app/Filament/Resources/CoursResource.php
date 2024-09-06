@@ -67,6 +67,7 @@ class CoursResource extends Resource
                 ->searchable(),
             Tables\Columns\TextColumn::make('resume')
                 ->label('Resumé')
+                ->limit(80)
                 ->searchable(),
             Tables\Columns\TextColumn::make('file_size')
                 ->label('Taille du fichier')

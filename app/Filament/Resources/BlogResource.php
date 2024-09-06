@@ -52,8 +52,12 @@ class BlogResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('title')
+                ->label('Titre')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('slug')
+
+                Tables\Columns\TextColumn::make('resume')
+                    ->label('Résumé')
+                    ->limit(80)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

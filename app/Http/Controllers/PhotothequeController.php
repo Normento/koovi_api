@@ -15,7 +15,6 @@ class PhotothequeController extends Controller
     public function index()
     {
         $phototheques = Phototheque::where('archive',0)
-        ->whereNull('deleted_at',true)
         ->paginate(10);
 
         $phototheques->getCollection()->transform(function ($phototeque) {

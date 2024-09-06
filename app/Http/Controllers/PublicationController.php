@@ -15,7 +15,6 @@ class PublicationController extends Controller
     public function index()
     {
         $publications = Publication::where('archive',0)
-        ->whereNull('deleted_at',true)
         ->paginate(10);
 
         $publications->getCollection()->transform(function ($publication) {

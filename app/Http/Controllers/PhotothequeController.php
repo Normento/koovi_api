@@ -14,9 +14,19 @@ class PhotothequeController extends Controller
      */
     public function index()
     {
-        $phototheques = Phototheque::all()->map(function ($phototheque) {
-            $phototheque->image = asset('storage/' . $phototheque->image);
-            return $phototheque;
+        $phototheques = Phototheque::where('archive',0)
+        ->whereNull('deleted_at',true)
+        ->paginate(10);
+
+        $phototheques->getCollection()->transform(function ($phototeque) {
+            if ($phototeque->image) {
+                $phototeque->image = asset('storage/' . $phototeque->image);
+            }
+
+            if ($phototeque->file) {
+                $phototeque->file = asset('storage/' . $phototeque->file);
+            }
+            return $phototeque;
         });
 
         return response()->json($phototheques);

@@ -9,7 +9,8 @@ class BlogController extends Controller
 {
     public function index(Request $request)
     {
-        $blogs = Blog::whereNull('deleted_at')
+        $blogs = Blog::whereNull('deleted_at',true)
+                    ->where('archive',0)
                      ->paginate(10);
 
         $blogs->getCollection()->transform(function ($blog) {

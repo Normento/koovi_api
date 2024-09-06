@@ -14,11 +14,11 @@ class CoursController extends Controller
      */
     public function index()
     {
-        $cours = Cours::whereNull('deleted_at')
+        $cours = Cours::whereNull('deleted_at',true)
                 ->where('archive',0)
-                ->get();
+                ->paginate(10);
 
-        $cours->transform(function ($cour) {
+        $cours->getCollection()->transform(function ($cour) {
             if ($cour->image) {
                 $cour->image = asset('storage/' . $cour->image);
             }

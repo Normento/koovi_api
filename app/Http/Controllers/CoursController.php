@@ -14,7 +14,9 @@ class CoursController extends Controller
      */
     public function index()
     {
-        $cours = Cours::whereNull('deleted_at')->get();
+        $cours = Cours::whereNull('deleted_at')
+                ->where('archive',0)
+                ->get();
 
         $cours->transform(function ($cour) {
             if ($cour->image) {

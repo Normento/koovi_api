@@ -47,6 +47,9 @@ Route::get('phototheque', [PhotothequeController::class, 'index']);
 
 Route::get('publications', [PublicationController::class, 'index']);
 
+Route::get('publications/{slug}', [PublicationController::class, 'show']);
+
+
 Route::get('homes', [HomeController::class, 'index']);
 
 Route::get('search', [SearchController::class, 'index']);
